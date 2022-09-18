@@ -18,27 +18,6 @@ const Home: NextPage = (
   const tvpopular = props.tvpopular?.results;
   const tvtop = props.tvtop?.results;
 
-  const playContent = (value: []): JSX.Element[] => {
-    const content = value.map((ele: PlayType) => {
-      return (
-        <div key={ele.id}>
-          <Link href={`/view/${ele.id}`}>
-            {ele.poster_path ? (
-              <img
-                className="mb-2 cursor-pointer"
-                src={`https://image.tmdb.org/t/p/w300${ele.poster_path}`}
-                alt="img"
-              ></img>
-            ) : (
-              ele.name
-            )}
-          </Link>
-        </div>
-      );
-    });
-    return content;
-  };
-
   return (
     <>
       <Nav />
@@ -80,3 +59,25 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { movienow, tvpopular, tvtop },
   };
 };
+
+export const playContent = (value: []): JSX.Element[] => {
+  const content = value.map((ele: PlayType) => {
+    return (
+      <div key={ele.id}>
+        <Link href={`/view/${ele.id}`}>
+          {ele.poster_path ? (
+            <img
+              className="mb-2 cursor-pointer"
+              src={`https://image.tmdb.org/t/p/w300${ele.poster_path}`}
+              alt="img"
+            ></img>
+          ) : (
+            ele.name
+          )}
+        </Link>
+      </div>
+    );
+  });
+  return content;
+};
+
