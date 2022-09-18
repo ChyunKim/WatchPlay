@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 export const Nav = () => {
   return (
@@ -20,7 +19,6 @@ export const Nav = () => {
 };
 
 export const SearchBar = () => {
-  const router = useRouter();
   const [value, setValue] = useState<string>("");
 
   const eventsearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +33,6 @@ export const SearchBar = () => {
           <input
             className="w-1/3 px-4 py-1.5 border text-lg border-gray-300 rounded outline-none text-black mr-5"
             placeholder="video search.."
-            onFocus={() => router.push("/search")}
             onChange={eventsearch}
           ></input>
           <Link href={`/search/${value}`}>
