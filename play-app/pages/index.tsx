@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
-import { Nav } from "./search";
+import { Nav, SearchBar } from "./search";
 
 const Home: NextPage = () => {
   return (
     <>
       <Nav />
+      <SearchBar />
     </>
   );
 };
