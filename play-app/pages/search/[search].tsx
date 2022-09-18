@@ -6,9 +6,8 @@ import { playContent } from "..";
 const Searchpage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  console.log(props.saerchtv);
-
   const searchdata = props.saerchtv?.results
+
   return(
     <>
       <Nav />

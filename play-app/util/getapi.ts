@@ -19,3 +19,8 @@ export const tvAPI = {
   popular: () => api.get("tv/popular"),
   toprated: () => api.get("tv/top_rated"),
 };
+
+export const getSearch = (search: string) =>
+  axios.get(
+    `https://api.themoviedb.org/3/search/tv/?api_key=${API_KEY}&query=${search}`
+  );
