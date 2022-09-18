@@ -1,13 +1,7 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import { Nav, SearchBar } from "./search";
 import { movieAPI, tvAPI } from "../util/getapi";
-
-export interface APIType {
-  page: number;
-  results: [];
-  total_pages: number;
-  total_result: number;
-}
+import Link from "next/link";
 
 export interface PlayType {
   id: number | null;
@@ -20,22 +14,54 @@ export interface PlayType {
 const Home: NextPage = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
-  const tvpopular: PlayType = props.tvpopular?.results;
-  const movienow: PlayType = props.movienow?.results;
-  const moviepopular: PlayType = props.moviepopular?.results;
-  const tvtop: PlayType = props.tvtop?.results;
+  const movienow = props.movienow?.results;
+  const tvpopular = props.tvpopular?.results;
+  const tvtop = props.tvtop?.results;
 
-
-  console.log("movienow", movienow);
-  console.log("moviepopular", moviepopular);
-
-  console.log("tv", tvpopular);
-  console.log("tvtop", tvtop);
+  const playContent = (value : []): JSX.Element[] => {
+    const content = value.map((ele: PlayType) => {
+     
+      return (
+        <div key={ele.id}>
+          <Link href={`/view/${ele.id}`}>
+            {ele.poster_path ? (
+              <img
+                className="mb-2 cursor-pointer"
+                src={`https://image.tmdb.org/t/p/w300${ele.poster_path}`}
+                alt="img"
+              ></img>
+            ) : (
+              ele.name
+            )}
+          </Link>
+        </div>
+      );
+    });
+    return content;
+  };
 
   return (
     <>
       <Nav />
       <SearchBar />
+      <div className="pl-20 pt-8 pr-20">
+        <h1 className = "text-xl mb-6 font-extrabold">Movie now playing</h1>
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 pb-10">
+          {playContent(movienow)}
+        </div>
+      </div>
+      <div className="pl-20 pt-8 pr-20">
+        <h1 className = "text-xl mb-6 font-extrabold">TV Popular</h1>
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 pb-10">
+          {playContent(tvpopular)}
+        </div>
+      </div>
+      <div className="pl-20 pt-8 pr-20">
+        <h1 className = "text-xl mb-6 font-extrabold">Top Rate</h1>
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 pb-10">
+          {playContent(tvtop)}
+        </div>
+      </div>
     </>
   );
 };
@@ -43,11 +69,8 @@ const Home: NextPage = (
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-
   const res_movienow = await movieAPI.nowplaying();
   const movienow = res_movienow.data;
-  const res_moviepopular = await movieAPI.popular();
-  const moviepopular = res_moviepopular.data;
 
   const res_tvpopular = await tvAPI.popular();
   const tvpopular = res_tvpopular.data;
@@ -55,6 +78,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const tvtop = res_tvtop.data;
 
   return {
-    props: { movienow, moviepopular, tvpopular, tvtop },
+    props: { movienow, tvpopular, tvtop },
   };
 };
