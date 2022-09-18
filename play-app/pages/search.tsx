@@ -34,7 +34,7 @@ export const SearchBar = () => {
         <form>
           <input
             className="w-1/3 px-4 py-1.5 border text-lg border-gray-300 rounded outline-none text-black mr-5"
-            placeholder="Enter the video you want to find.."
+            placeholder="video search.."
             onFocus={() => router.push("/search")}
             onChange={eventsearch}
           ></input>
