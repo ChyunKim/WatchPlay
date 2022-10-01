@@ -1,6 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Nav } from "../search";
 import { getDetail, getKey } from "../../util/getapi";
+import React from "react";
 
 const Viewpage = () =>
   // props: InferGetServerSidePropsType<typeof getServerSideProps>

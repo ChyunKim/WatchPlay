@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Nav } from "./search";
+import React from "react";
 
 const accout = () => {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = React.useState(false);
 
   const checkLogin = () => {
     axios.get("api/isLogin").then((res) => {

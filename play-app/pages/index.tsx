@@ -2,6 +2,7 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import { Nav, SearchBar } from "./search";
 import { movieAPI, tvAPI } from "../util/getapi";
 import Link from "next/link";
+import React from "react";
 
 export interface PlayType {
   id: number | null;

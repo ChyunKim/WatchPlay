@@ -2,6 +2,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { getSearch } from "../../util/getapi";
 import { Nav, SearchBar } from "../search";
 import { playContent } from "..";
+import React from "react";
 
 const Searchpage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>

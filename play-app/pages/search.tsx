@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import React from "react";
 
 export const Nav = () => {
   return (
@@ -19,7 +20,7 @@ export const Nav = () => {
 };
 
 export const SearchBar = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = React.useState<string>("");
 
   const eventsearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
