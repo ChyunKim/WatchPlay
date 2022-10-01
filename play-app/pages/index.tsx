@@ -80,4 +80,3 @@ export const playContent = (value: []): JSX.Element[] => {
   });
   return content;
 };
-

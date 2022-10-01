@@ -24,3 +24,13 @@ export const getSearch = (search: string) =>
   axios.get(
     `https://api.themoviedb.org/3/search/tv/?api_key=${API_KEY}&query=${search}`
   );
+
+export const getDetail = (id: number) =>
+  axios.get(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`
+  );
+
+export const getKey = (id: number) =>
+  axios.get(
+    `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${API_KEY}`
+  );
