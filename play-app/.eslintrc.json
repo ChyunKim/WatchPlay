@@ -9,7 +9,7 @@
     },
     "babelOptions": { "configFile": "./.babelrc" }
   },
-  "extends": ["plugin:react/recommended", "plugin:prettier/recommended"],
+  "extends": ["next/babel","next/core-web-vitals"],
   "rules": {
     "prettier/prettier": [
       "error",
